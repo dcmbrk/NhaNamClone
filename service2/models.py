@@ -106,14 +106,3 @@ class OrderItem(db.Model):
 
     def __repr__(self):
         return f"<OrderItem id={self.id} order_id={self.order_id} book_id={self.book_id}>"
-    
-class Person(db.Model):
-    __tablename__ = 'people'
-
-    pid = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Text, nullable=False)
-    age = db.Column(db.Integer)
-    job = db.Column(db.Text)
-
-    def __repr__(self):
-        return f"Person with name {self.name} and age {self.age}"
