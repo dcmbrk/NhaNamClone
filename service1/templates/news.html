@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}{{category}}{% endblock %}
+{% block extra_stylesheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tin-sach/tin-sach.css')}}">
+{% endblock %}
+{% block content %}
+<main>
+    <div id="title-nav">
+        <div id="title-nav-content">
+            <p id="index">Trang chủ</p> <i class="ri-arrow-right-s-line"></i>
+            <p id="now"> Tin sách</p>
+        </div>
+    </div>
+    <div id="tin-sach">
+        <div id="tin-sach-title-big">Tin Sách</div>
+        <div class="tin-sach-content">Chào mừng các bạn đến với Trang Tin Sách Nhã Nam, mời bạn click vào các đường
+            link bên dưới để vào các chuyên mục</div>
+        <div class="tin-sach-title"><a href="">Tin Nhã Nam </a></div>
+        <div class="tin-sach-content">Các thông tin về bản quyền, sự kiện ra mắt sách, chương trình khuyến mại, hội
+            sách, tác giả, tác phẩm của Nhã Nam…</div>
+        <div class="tin-sach-title"><a href="">Review Sách Của Đọc giả </a></div>
+        <div class="tin-sach-content">Các bài điểm sách, bình sách, giới thiệu sách Nhã Nam của độc giả mà chúng tôi
+            xin phép đăng lại trên website này.</div>
+        <div class="tin-sach-title"><a href="">Review Sách Trên Báo Chí</a></div>
+        <div class="tin-sach-content">Các bài giới thiệu sách Nhã Nam trên các báo, đài</div>
+        <div class="tin-sach-title"><a href="">Biên Tập Viên Giới Thiệu</a></div>
+        <div class="tin-sach-content">Các danh sách đề cử, giới thiệu sách… của BTV Nhã Nam.</div>
+
+    </div>
+</main>
+{% endblock %}

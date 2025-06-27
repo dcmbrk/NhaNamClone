@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}{{ category }}{% endblock %}
+
+{% block extra_stylesheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/loai-sach/loai-sach.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<body>
+    <main>
+        <div id="title-nav">
+            <div id="title-nav-content">
+                <p id="index">Trang chủ</p>
+                <i class="ri-arrow-right-s-line"></i>
+                <p id="now">{{ category }}</p>
+            </div>
+        </div>
+
+        <div id="img-book">
+            <img src="{{ url_for('static', filename='images/book-bg.webp') }}" alt="">
+        </div>
+
+        <div id="loai-sach-content">
+            <div id="quoc-gia">
+                <div id="quoc-gia-title">Quốc gia</div>
+                <div id="quoc-gia-box">
+                    <div class="quoc-gia-item"><input type="checkbox">
+                        <p>Việt Nam</p>
+                    </div>
+                    <div class="quoc-gia-item"><input type="checkbox">
+                        <p>Trung Quốc</p>
+                    </div>
+                    <div class="quoc-gia-item"><input type="checkbox">
+                        <p>Nhật Bản</p>
+                    </div>
+                    <div class="quoc-gia-item"><input type="checkbox">
+                        <p>Pháp</p>
+                    </div>
+                    <div class="quoc-gia-item"><input type="checkbox">
+                        <p>Đức</p>
+                    </div>
+                    <div class="quoc-gia-item"><input type="checkbox">
+                        <p>Hàn Quốc</p>
+                    </div>
+                    <div class="quoc-gia-item"><input type="checkbox">
+                        <p>Italy</p>
+                    </div>
+                    <div class="quoc-gia-item"><input type="checkbox">
+                        <p>Mỹ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sach-content">
+                <div id="sap-xep-box"></div>
+                <div id="sach-box">
+                    {% for book in books %}
+                    <div class="sachs">
+                        <div id="sachs-img">
+                            <a href="{{ url_for('book', id=book['id']) }}">
+                                <img src="{{ book['book_img'] }}" alt="">
+                            </a>
+                        </div>
+                        <div id="sachs-title" title="{{ book['title'] }}">
+                            {{ book['title'] }}
+                        </div>
+                        <div id="sachs-price">
+                            {% if book['price_old'] %}
+                            <div id="sachs-prive-amount">{{ book['price_old'] }}</div>
+                            <div id="sachs-price-sale">{{ book['price'] }}</div>
+                            {% else %}
+                            <div class="contact-text">Liên hệ</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div id="pages">
+                    <div id="pages-content">
+                        <i class="ri-arrow-left-s-line {% if page == 1 %}disabled{% endif %}">
+                            {% if page > 1 %}<a href="{{ url_for('category', category=category, page=page-1) }}"></a>{%
+                            endif %}
+                        </i>
+                        {% set window=2 %}
+                        {% set start=page-window if page-window>1 else 1 %}
+                        {% set end=page+window if page+window<total_pages else total_pages %} {% if start>1 %}
+                            <p class="page"><a href="{{ url_for('category', category=category, page=1) }}">1</a></p>
+                            {% if start>2 %}<span class="ellipsis">…</span>{% endif %}
+                            {% endif %}
+                            {% for p in range(start, end+1) %}
+                            <p class="page{% if p==page %} page-active{% endif %}"><a
+                                    href="{{ url_for('category', category=category, page=p) }}">{{ p }}</a></p>
+                            {% endfor %}
+                            {% if end<total_pages %} {% if end<total_pages-1 %}<span class="ellipsis">…</span>{% endif
+                                %}
+                                <p class="page"><a
+                                        href="{{ url_for('category', category=category, page=total_pages) }}">{{
+                                        total_pages }}</a></p>
+                                {% endif %}
+                                <i class="ri-arrow-right-s-line {% if page==total_pages %}disabled{% endif %}">
+                                    {% if page<total_pages %}<a
+                                        href="{{ url_for('category', category=category, page=page+1) }}"></a>{% endif %}
+                                </i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+{% endblock %}

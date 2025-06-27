@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}{{category}}{% endblock %}
+{% block extra_stylesheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/gio-hang/gio-hang.css')}}">
+{% endblock %}
+{% block content %}
+<main>
+    <div id="title-nav">
+        <div id="title-nav-content">
+            <p id="index">Trang chủ</p> <i class="ri-arrow-right-s-line"></i>
+            <p id="now"> Giỏ hàng</p>
+        </div>
+    </div>
+    <div id="gio-hang-title">Giỏ hàng của bạn</div>
+    <div id="container">
+        <div id="gio-hang-box">
+            <div id="gio-hang-content-title">
+                <div class="gio-hang-info">Thông tin sản phẩm</div>
+                <div class="gio-hang-info">Đơn giá</div>
+                <div class="gio-hang-info">Số lượng</div>
+                <div class="gio-hang-info">Thành tiền</div>
+            </div>
+            <div id="gio-hang-content">
+                {% for item in items %}
+                <div class="san-pham" id="border-first">
+                    <div id="san-pham-img"><img src="{{ item['book_img'] }}" alt=""></div>
+                    <div id="san-pham-title">
+                        <div id="san-pham-name">{{ item['title'] }}</div>
+                        <form action="{{ url_for('delete_from_cart', book_id=item['book_id']) }}" method="post"
+                            style="display:inline;">
+                            <button type="submit" class="btn-link">Xóa</button>
+                        </form>
+                    </div>
+                    <div id=" gia-san-pham">{{ item['price'] }}
+                    </div>
+                    <div id="so-luong-san-pham">
+                        <button class="btn-amount"><i class="ri-add-line"></i></button>
+                        <div id="amount">1</div>
+                        <button class="btn-amount"><i class="ri-subtract-line"></i></button>
+                    </div>
+                    <div id="tien-san-pham">{{ item['price'] }}</div>
+                </div>
+                {% endfor %}
+                <div id="thanh-toan">
+                    <div id="thanh-toan-content">
+                        <div id="title-thanh-toan">Tổng tiền:</div>
+                        <div id="amount-thanh-toan">{{ total_price }}</div>
+                    </div>
+                    <form action="{{url_for('payment')}}" method="get" class="btn-thanh-toan">
+                        <button class="btn-thanh-toan">Thanh toán</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="gio-hang-time"></div>
+
+    </div>
+</main>
+{% endblock %}

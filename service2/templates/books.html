@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quản lý Sách</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Admin Panel</a>
+      <div>
+        <a class="btn btn-outline-light me-2" href="{{ url_for('books') }}">Quản lý Sách</a>
+        <a class="btn btn-outline-light me-2" href="{{ url_for('add_book') }}">Thêm Sách</a>
+        <a class="btn btn-outline-light" href="{{ url_for('accounts') }}">Tài khoản</a>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h1>Quản lý Sách</h1>
+      <a href="{{ url_for('add_book') }}" class="btn btn-success">+ Tạo sách mới</a>
+    </div>
+    <div class="mb-3">
+      <input type="text" class="form-control" placeholder="Tìm kiếm theo tên sách, tác giả, thể loại...">
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th>ID</th>
+            <th>Ảnh</th>
+            <th>Thông tin sách</th>
+            <th>Thể loại</th>
+            <th>Tác giả</th>
+            <th>Trang</th>
+            <th>Giá gốc</th>
+            <th>Giá bán</th>
+            <th>Sale</th>
+            <th>Tồn kho</th>
+            <th>NXB</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for book in books %}
+          <tr>
+            <td>{{ book.id }}</td>
+            <td><img src="{{ book.book_img }}" alt="Sách" style="width: 60px; height: 80px; object-fit: cover;"></td>
+            <td>
+              <div class="fw-bold">{{ book.title }}</div>
+              <div>{{ book.author }}</div>
+              <div class="text-muted small">{{ book.pages }} trang</div>
+            </td>
+            <td>{{ book.category }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.pages }}</td>
+            <td>{{ book.price_old }}</td>
+            <td>{{ book.price }}</td>
+            <td>{{ book.discount }}</td>
+            <td>{{ book.stock }}</td>
+            <td>{{ book.publisher }}</td>
+            <td>
+              <form action="{{ url_for('delete_book', book_id=book.id) }}" method="POST" style="display: inline;">
+                <button type="submit" class="btn btn-danger btn-sm"
+                  onclick="return confirm('Bạn có chắc chắn muốn xóa cuốn sách này không?')">Xóa</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <nav>
+      <ul class="pagination justify-content-center">
+        {% if page > 1 %}
+        <li class="page-item">
+          <a class="page-link" href="{{ url_for('books', page=page-1) }}">‹</a>
+        </li>
+        {% endif %}
+        {% for p in pages_range %}
+        {% if p == '...' %}
+        <li class="page-item disabled"><span class="page-link">...</span></li>
+        {% else %}
+        <li class="page-item {% if p == page %}active{% endif %}">
+          <a class="page-link" href="{{ url_for('books', page=p) }}">{{ p }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+        {% if page < total_pages %} <li class="page-item">
+          <a class="page-link" href="{{ url_for('books', page=page+1) }}">›</a>
+          </li>
+          {% endif %}
+      </ul>
+    </nav>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% block title %}{{book['title']}}{% endblock %}
+{% block extra_stylesheets %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/sach/sach.css')}}">
+{% endblock %}
+{% block content %}
+<main>
+    <div id="title-nav">
+        <div id="title-nav-content">
+            <p id="index">Trang chủ</p> <i class="ri-arrow-right-s-line"></i>
+            <p id="index">Sách</p> <i class="ri-arrow-right-s-line"></i>
+            <p id="now"> Sách</p>
+        </div>
+    </div>
+    <div class="container">
+        <div id="sach-box">
+            <div id="sach-box-left"><img src="{{ book['book_img'] }}" alt=""></div>
+            <div id="sach-box-right">
+                <div id="sach-box-right-title">
+                    <div id="sach-box-name">{{ book['title'] }}</div>
+                    <div id="sach-box-tac-gia">
+                        <span id="tac-gia-title">Tác giả:</span>
+                        <a href="{% if author %} {{ url_for('author', id = author['id'])}} {% endif %}">
+                            <span id="tac-gia-name">{{ book['author'] }}</span>
+                        </a>
+                    </div>
+                    <div id="book-price">
+                        <div id="sale-price">{{ book['price'] }}</div>
+                        <div id="real-price">{{ book['price_old'] }}</div>
+                        <div id="sale">-{{ book['discount'] }}</div>
+                    </div>
+                    <div id="amount-content">
+                        <div id="amount-box">
+                            <button class="btn-amount"><i class="ri-subtract-line"></i></button>
+                            <div id="amount-buy">1</div>
+                            <button class="btn-amount"><i class="ri-add-line"></i></button>
+                        </div>
+                        <div id="amount">Còn lại {{ book['stock']}} trong kho</div>
+                    </div>
+                    <div id="buy-content">
+                        <form action="{{ url_for('add_to_cart', book_id=book['id']) }}" method="post"
+                            style="display:inline;">
+                            <button type="submit" class="btn-buy" id="btn-cart">Thêm vào giỏ hàng</button>
+                        </form>
+                        <form action="{{ url_for('payment') }}" method="get" style="display:inline;">
+                            <input type="hidden" name="book_id" value="{{ book['id'] }}">
+                            <button type="submit" class="btn-buy" id="btn-buy">Mua ngay</button>
+                        </form>
+                    </div>
+                    <div id="sach-box-right-san">
+                        <p>Mua sách trên sàn TMĐT</p>
+                        <a href=""><img src="{{ url_for('static', filename='/images/icon/shopee-icon.webp') }}"
+                                alt=""></a>
+                        <a href=""><img src="{{ url_for('static', filename='/images/icon/lazada-icon.webp') }}"
+                                alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="sach-info">
+            <div id="gioi-thieu-sach">
+                <div id="gioi-thieu-title">Giới thiệu sách</div>
+                <div id="gioi-thieu-content">
+                    <p>
+                        {{ book['description'] }}
+                    </p>
+                </div>
+            </div>
+            <div id="thong-tin-sach">
+                <div id="thong-tin-sach-title">Thông tin chi tiết</div>
+                <div id="thong-tin-box">
+                    <div id="thong-tin-title">
+                        <ul>
+                            <li>Tác giả</li>
+                            <li>Dịch giả</li>
+                            <li>Nhà xuất bản</li>
+                            <li>Kích thước</li>
+                            <li>Số trang</li>
+                            <li>Ngày phát hành</li>
+                        </ul>
+                    </div>
+                    <div id="thong-tin">
+                        <ul>
+                            <li>{{ book['author'] }}</li>
+                            <li>{{ book['translator'] }}</li>
+                            <li>{{ book['publisher'] }}</li>
+                            <li>{{ book['size'] }}</li>
+                            <li>{{ book['pages'] }}</li>
+                            <li>{{ book['release_date'] }}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="sach-khac-container">
+                    <div id="title-sach-khac">Giới thiệu sách Nhã Nam</div>
+                    <div id="sach-khac-box">
+                        {% for i in range(1,5) %}
+                        <div class="sach-khac">
+                            <img src="{{ url_for('static', filename='images/new/new' ~ i ~ '.webp') }}" alt="">
+                            <div id="sach-khac-content">
+                                <div id="name-sach-khac">Hành trình khám phá sự phát triển của nghệ</div>
+                                <div id="date">Thứ Hai, 17/03/2025</div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="section-three">
+            <div id="section-three-title">
+                <div id="section-three-title-one">Có thể bạn cũng thích</div>
+                <div id="section-three-title-two">xem thêm</div>
+            </div>
+            <div id="new-book-content">
+                {% for b in relative_books %}
+                <div class="new-book">
+                    <a id="img-new-book" href="{{ url_for('book', id = b['id']) }}">
+                        <img src="{{ b['book_img'] }}" alt="Bìa sách {{ b['title'] }}">
+                    </a>
+                    <div id="new-book-title">{{ b['title'] }}</div>
+                    <div id="price-new-book">
+                        <div id="price">{{ b['price'] }}</div>
+                        <div id="price-sale">{{ b['price_old'] }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+</main>
+{% endblock %}

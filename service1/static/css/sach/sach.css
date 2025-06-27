@@ -1,0 +1,409 @@
+#container {
+  width: 100%;
+  height: 2045px;
+}
+
+#sach-box {
+  width: 1300px;
+  height: 560px;
+  display: flex;
+  margin: 30px auto;
+}
+
+#sach-box-left {
+  width: 520px;
+  height: 560px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.5px solid #eeeeee;
+  border-radius: 4px;
+}
+
+#sach-box-left img {
+  width: 310px;
+  height: 480px;
+  border-radius: 4px;
+}
+
+#sach-box-right {
+  width: 530px;
+  padding-left: 20px;
+}
+
+#sach-box-right-title {
+  width: 530px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#sach-box-name {
+  width: 530px;
+  height: 72px;
+  font-size: 30px;
+  color: #333;
+  font-weight: bold;
+  line-height: 36px;
+}
+
+#sach-box-tac-gia {
+  width: 100%;
+  height: 25px;
+  margin-top: 10px;
+}
+
+#tac-gia-title {
+  color: #333;
+}
+
+#tac-gia-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+}
+
+#book-price {
+  display: flex;
+  width: 595px;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+#sale-price {
+  font-size: 30px;
+  color: green;
+  font-weight: bolder;
+}
+
+#real-price {
+  font-size: 20px;
+  color: #777777;
+  text-decoration: line-through;
+}
+
+#amount-content {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+#amount-box {
+  display: flex;
+  border: 1px solid gray;
+}
+
+.btn-amount {
+  width: 30px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  background-color: #fff;
+}
+
+#amount-buy {
+  width: 38px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+#buy-content {
+  display: flex;
+}
+
+#amount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  font-size: 16px;
+  color: #777777;
+}
+
+#buy-content {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-buy {
+  width: 198px;
+  height: 51px;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+#btn-cart {
+  background-color: #e0e0e07a;
+  border: 1px solid green;
+  color: green;
+}
+
+#btn-cart:hover {
+  background-color: green;
+  color: #fff;
+}
+
+#btn-buy {
+  background-color: green;
+  border: none;
+  color: #fff;
+  border: 1px solid green;
+}
+
+#btn-buy:hover {
+  background-color: #fff;
+  color: green;
+}
+
+#sale {
+  width: 49px;
+  height: 23px;
+  background-color: #eb5757;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#sach-box-right-san {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#sach-info {
+  width: 1290px;
+  height: 920px;
+  margin: 0 auto;
+  display: flex;
+}
+
+#gioi-thieu-sach {
+  width: 840px;
+  height: 920px;
+}
+
+#thong-tin-sach {
+  width: 410px;
+  height: 920px;
+  display: flex;
+  flex-direction: column;
+}
+
+#thong-tin-box {
+  display: flex;
+  width: 410px;
+  height: 204px;
+  border: 1px solid gray;
+  margin: 10px;
+  border-radius: 4px;
+}
+
+#thong-tin-sach-title {
+  color: green;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#thong-tin-title {
+  flex: 1;
+  padding-left: 40px;
+}
+
+#thong-tin-title ul li {
+  padding-top: 10px;
+  color: #3f3f40;
+}
+
+#thong-tin {
+  flex: 1;
+}
+
+#thong-tin ul {
+  list-style: none;
+  color: #3f3f40;
+  font-weight: 700;
+}
+
+#thong-tin ul li {
+  padding-top: 10px;
+}
+
+#gioi-thieu-title {
+  font-size: 20px;
+  color: green;
+  font-weight: bold;
+}
+
+#gioi-thieu-content p {
+  padding-top: 20px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3f3f40;
+}
+
+#sach-khac-container {
+  width: 410px;
+  height: 596px;
+  display: flex;
+  flex-direction: column;
+}
+
+#title-sach-khac {
+  font-size: 20px;
+  color: green;
+  font-weight: bold;
+  padding-left: 10px;
+  padding-top: 30px;
+}
+
+#sach-khac-box {
+  display: flex;
+  flex-direction: column;
+  width: 410px;
+  padding-left: 10px;
+  padding-top: 20px;
+}
+
+.sach-khac {
+  display: flex;
+  flex-direction: row;
+  width: 410px;
+  height: 125px;
+  border-radius: 4px;
+  border: 1px solid gray;
+  margin-bottom: 20px;
+}
+
+.sach-khac img {
+  width: 196px;
+  height: 124px;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+
+#sach-khac-content {
+  display: flex;
+
+  flex-direction: column;
+  width: 196px;
+  height: 124px;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+#name-sach-khac {
+  width: 100%;
+  font-size: 14px;
+  font-weight: bold;
+  color: #3f3f40;
+}
+
+#date {
+  padding-top: 10px;
+  width: 100%;
+}
+
+/* sach co the ban thich */
+
+#section-three {
+  width: 1270px;
+  height: 414px;
+  margin: 30px auto;
+  border-top: green 2px solid;
+}
+
+#section-three-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+#new-book-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin-top: 25px;
+}
+
+.new-book {
+  width: 230px;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+#img-new-book {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
+
+#img-new-book img {
+  object-fit: cover;
+  width: 196px;
+  height: 245px;
+}
+
+#price-new-book {
+  flex: 1;
+  width: 196px;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#new-book-title {
+  width: 196px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#section-three-title-one {
+  font-size: 28px;
+  font-weight: bold;
+  color: green;
+}
+
+#section-three-title-two {
+  font-size: 15px;
+  color: green;
+  font-weight: bold;
+}
+
+#price-special {
+  text-align: center;
+  width: 196px;
+}
+
+#price-special,
+#price {
+  font-size: 18px;
+  font-weight: bold;
+  color: green;
+}
+
+#price-sale {
+  font-size: 14px;
+  text-decoration: line-through;
+  color: gray;
+}

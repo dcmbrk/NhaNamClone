@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/thanh-toan.css')}}">
+</head>
+
+<body>
+    <div class="checkout">
+        <div class="checkout-left">
+            <h2 class="section-title">Thông tin nhận hàng</h2>
+            <form action="{{ url_for('payment') }}" method="post">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.email(class="form-control", placeholder="Email") }}
+                </div>
+                <div class="form-group">
+                    {{ form.full_name(class="form-control", placeholder="Họ và tên") }}
+                </div>
+                <div class="form-group">
+                    {{ form.phone(class="form-control", placeholder="Số điện thoại (tùy chọn)") }}
+                </div>
+                <div class="form-group">
+                    {{ form.address(class="form-control", placeholder="Địa chỉ (tùy chọn)") }}
+                </div>
+                <div class="form-group">
+                    {{ form.province(class="form-control", placeholder="Tỉnh thành") }}
+                </div>
+                <div class="form-group">
+                    {{ form.district(class="form-control", placeholder="Quận huyện (tùy chọn)") }}
+                </div>
+                <div class="form-group">
+                    {{ form.ward(class="form-control", placeholder="Phường xã (tùy chọn)") }}
+                </div>
+                <div class="form-group">
+                    {{ form.note(class="form-control", placeholder="Ghi chú (tùy chọn)") }}
+                </div>
+        </div>
+
+        <div class="checkout-middle">
+            <h2 class="section-title">Vận chuyển</h2>
+            <div class="shipping-options">
+                <label><input type="radio" name="shipping_method" value="COD" checked> Thanh toán khi giao hàng
+                    (COD)</label>
+            </div>
+            <h2 class="section-title">Mã giảm giá</h2>
+            <div class="form-group">
+                <input type="text" name="discount_code" placeholder="Nhập mã giảm giá (nếu có)">
+            </div>
+        </div>
+
+        <div class="checkout-right">
+            <div class="order-summary">
+                <h2>Đơn hàng ({{ items|length }} sản phẩm)</h2>
+                {% for item in items %}
+                <div class="order-item">
+                    <img src="{{ item['book_img'] }}" alt="Product">
+                    <div class="order-item-info">
+                        <a href="{{ url_for('book', id=item['book_id']) }}">{{ item['title'] }}</a>
+                        <div class="price">{{ "{:,.0f}₫".format(item['line_total'] or 0) }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="totals">
+                    <div><span>Tạm tính</span><span>{{ total_price }}</span></div>
+                    <div><span>Phí vận chuyển</span><span>0₫</span></div>
+                    <div class="total"><span>Tổng cộng</span><span style="color: green">{{ total_price }}</span></div>
+                </div>
+                {{ form.submit(class="btn", style="background-color: green; font-weight: bold;") }}
+                <a href="{{ url_for('cart') }}" class="back-link" style="color: green;">‹ Quay về giỏ hàng</a>
+            </div>
+        </div>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block extra_stylesheets %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/dang-nhap/dang-nhap.css')}}">
+{% endblock %}
+{% block content %}
+<main>
+    <div id="title-nav">
+        <div id="title-nav-content">
+            <p id="index">Trang chủ</p> <i class="ri-arrow-right-s-line"></i>
+            <p id="now"> Đăng nhập tài khoản</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="login-box">
+            <h2 style="color: #333;">Đăng nhập tài khoản</h2>
+            <form method="POST" action="{{ url_for('login') }}">
+                {{ form.hidden_tag() }}
+                <div class="textbox">
+                    {{ form.email(class="form-control", placeholder="Email") }}
+                </div>
+                <div class="textbox">
+                    {{ form.password(class="form-control", placeholder="Mật khẩu") }}
+                </div>
+                <div>
+                    {{ form.remember() }} Ghi nhớ đăng nhập
+                </div>
+                {% if error %}
+                <div style="color: red; text-align: center; padding: 10px 10px;"> {{ error }}</div>
+                {% endif %}
+                {{ form.submit(class="btn-login") }}
+                <div class="forgot-password">
+                    <a href="#">Bạn quên mật khẩu bấm vào đây</a>
+                </div>
+            </form>
+        </div>
+        <div class="benefits-box">
+            <h2>Quyền lợi với thành viên</h2>
+            <ul>
+                <li>Vận chuyển siêu tốc</li>
+                <li>Sản phẩm đa dạng</li>
+                <li>Đổi trả dễ dàng</li>
+                <li>Tích điểm đổi quà</li>
+                <li>Được giảm giá cho lần mua tiếp theo lên đến 10%</li>
+            </ul>
+            <button class="btn-register"><a href="{{ url_for('register') }}">Đăng ký</a></button>
+        </div>
+    </div>
+</main>
+{% endblock %}

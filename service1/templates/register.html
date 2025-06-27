@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block extra_stylesheets %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/dang-ky/dang-ky.css')}}">
+{% endblock %}
+{% block content %}
+<main>
+    <div id="title-nav">
+        <div id="title-nav-content">
+            <p id="index">Trang chủ</p> <i class="ri-arrow-right-s-line"></i>
+            <p id="now"> Đăng ký tài khoản</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="register-section">
+            <h2>Đăng ký tài khoản</h2>
+            <form action="{{url_for('register')}}" method="POST">
+                {{ form.hidden_tag() }}
+                <label for="first_name">Họ <span class="required">*</span></label>
+                {{ form.first_name(class="form-control", placeholder="Họ") }}
+
+                <label for="last_name">Tên <span class="required">*</span></label>
+                {{ form.last_name(class="form-control", placeholder="Tên") }}
+
+                <label for="phone_number">Số điện thoại <span class="required">*</span></label>
+                {{ form.phone_number(class="form-control", placeholder="Số điện thoại") }}
+
+                <label for="email">Email <span class="required">*</span></label>
+                {{ form.email(class="form-control", placeholder="Email") }}
+
+                <label for="password">Mật khẩu <span class="required">*</span></label>
+                {{ form.password(class="form-control", placeholder="Mật khẩu") }}
+
+                {{ form.submit(class="btn-register") }}
+            </form>
+        </div>
+        <div class="benefits-section">
+            <h3>Quyền lợi với thành viên</h3>
+            <ul>
+                <li>Vận chuyển siêu tốc</li>
+                <li>Sản phẩm đa dạng</li>
+                <li>Đổi trả dễ dàng</li>
+                <li>Tích điểm đổi quà</li>
+                <li>Được giảm giá cho lần mua tiếp theo lên đến 10%</li>
+            </ul>
+            <button class="btn-login"><a href="{{ url_for('login') }}">Đăng nhập</a></button>
+        </div>
+    </div>
+</main>
+{% endblock %}

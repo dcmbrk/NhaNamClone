@@ -1,0 +1,229 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block extra_stylesheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index/section-one.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index/section-two.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index/section-three.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index/section-four.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index/section-five.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index/section-six.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index/section-seven.css') }}">
+{% endblock %}
+{% block content %}
+<main>
+    <section id="section-one">
+        <div id="section-one-content">
+            <div id="slide">
+                <img src="{{url_for('static', filename='images/slide1.webp')}}" alt="">
+                <div id="content-slide">
+                    <div id="title">
+                        <p>HỘI SÁCH NHÃ NAM CHÀO HÈ 2025</p>
+                    </div>
+                    <div id="date">
+                        <p>Thứ ba, 08/04/2025</p>
+                    </div>
+                </div>
+            </div>
+            <div id="news">
+                <div class="new">
+                    <div id="img-new"><img src="{{url_for('static', filename ='images/new/new1.webp')}}" alt="">
+                    </div>
+                    <div id="content-new">
+                        <div id="content-new-text">Hành trình khám phá sự phát triển của nghệ thuật âm thanh qua
+                            các</div>
+                        <div id="content-new-date">Thứ Hai, 17/03/2025</div>
+                    </div>
+                </div>
+                <div class="new">
+                    <div id="img-new"><img src="{{url_for('static', filename = 'images/new/new2.webp')}}" alt="">
+                    </div>
+                    <div id="content-new">
+                        <div id="content-new-text">Con người và đất đai</div>
+                        <div id="content-new-date">Thứ Hai, 17/03/2025</div>
+                    </div>
+                </div>
+                <div class="new">
+                    <div id="img-new"><img src="{{url_for('static', filename = 'images/new/new3.webp')}}" alt="">
+                    </div>
+                    <div id="content-new">
+                        <div id="content-new-text">“Pha cà phê ngon tại nhà” - Một cẩm nang toàn diện để
+                            pha cà phê</div>
+                        <div id="content-new-date">Chủ Nhật, 16/02/2025</div>
+                    </div>
+                </div>
+                <div class="new">
+                    <div id="img-new"><img src="{{url_for('static', filename='images/new/new4.webp')}}" alt="">
+                    </div>
+                    <div id="content-new">
+                        <div id="content-new-text">MAUS - làm thế nào để nói về Holocaust?</div>
+                        <div id="content-new-date">Thứ Hai, 20/01/2025</div>
+                    </div>
+                </div>
+    </section>
+
+
+    <section id="section-two">
+        <div id="section-two-title">
+            <div id="section-two-title-one">Các tác giả</div>
+            <a href="{{url_for('authors')}}">
+                <div id="section-two-title-two">xem thêm</div>
+            </a>
+        </div>
+        <div id="section-two-content">
+            {% for author in authors %}
+            <div class="tac-gia">
+                <a href="{{ url_for('author', id=author['id']) }}">
+                    <img src="{{ author['author_img'] }}" alt="Ảnh tác giả {{ author['name'] }}">
+                </a>
+                <p>{{author['name']}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="section-three">
+        <div id="section-three-title">
+            <div id="section-three-title-one">Sách mới</div>
+            <a href="{{ url_for('category', category = 'sach-moi-xuat-ban')}}">
+                <div id="section-three-title-two">xem thêm</div>
+            </a>
+        </div>
+        <div id="new-book-content">
+            {%for book in new_books%}
+            <div class="new-book">
+                <div id="img-new-book">
+                    <a href="{{ url_for('book', id=book['id']) }}">
+                        <img src="{{book['book_img']}}" alt="">
+                    </a>
+                </div>
+                <div id="new-book-title">{{book['title']}}</div>
+                <div id="price-new-book">
+                    <div id="price">{{book['price']}}</div>
+                    <div id="price-sale">{{book['price_old']}}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <section id="section-four">
+        <div id="section-four-content">
+            <div id="section-four-left">
+                <div id="section-four-left-title">
+                    <div id="section-four-left-title-one">Nhã Nam </div>
+                    <div id="section-four-left-title-two">Bởi vì sách là thế giới</div>
+                </div>
+                <div id="section-four-left-content">
+                    <div id="section-four-left-content-about">Nhã Nam, tên đầy đủ là Công ty Cổ phần Văn hóa và
+                        Truyền thông Nhã Nam, gia nhập thị trường sách Việt Nam vào tháng 2 năm 2005. Ngay từ cuốn
+                        sách đầu tiên, độc giả đã dành sự quan tâm và yêu mến cho một thương hiệu sách mới mẻ mang
+                        trong mình khát vọng góp phần tạo lập diện mạo mới cho xuất bản văn học tại Việt Nam.</div>
+                    <button id="section-four-left-content-btn">Xem thêm</button>
+                </div>
+            </div>
+            <div id="section-four-right">
+            </div>
+        </div>
+    </section>
+
+    <section id="section-five">
+        <div id="section-five-title">
+            <div id="section-five-title-one">Sắp xuất bản</div>
+            <a href="{{ url_for('category', category = 'sach-moi-xuat-ban')}}">
+                <div id="section-five-title-two">xem thêm</div>
+            </a>
+        </div>
+        <div id="new-book-content">
+            {%for book in upcoming_books%}
+            <div class="new-book">
+                <div id="img-new-book">
+                    <a href="{{ url_for('book', id=book['id']) }}">
+                        <img src="{{book['book_img']}}" alt="">
+                    </a>
+                </div>
+                <div id="new-book-title">{{book['title']}}</div>
+                <div id="price-new-book">
+                    <div id="price">{{book['price']}}</div>
+                    <div id="price-sale">{{book['price_old']}}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <section id="section-six">
+        <div id="section-six-title">
+            <div id="section-six-title-one">Sách Nhã Nam trên báo chí</div>
+            <div id="section-six-title-two">xem thêm</div>
+        </div>
+        <div id="nha-nam-book-content">
+            <div class="nha-nam-book">
+                <div id="nha-nam-book-img"><img
+                        src="{{url_for('static', filename='/images/nha-nam-book/nha-nam-book-1.png')}}" alt="">
+                </div>
+                <div id="nha-nam-book-title-one">"Dọc đường 2" và cuộc cày xới của một trí thức</div>
+                <div id="nha-nam-book-title-two">Ngay từ rất Trong lời giới thiệu cho cuốn Từ Đông sang Tây của cố
+                    tác giả Cao Huy Thuần, nhà văn</div>
+                <div id="nha-nam-book-date">Thứ Năm, 27/03/2025</div>
+            </div>
+            <div class="nha-nam-book">
+                <div id="nha-nam-book-img"><img
+                        src="{{url_for('static', filename='/images/nha-nam-book/nha-nam-book-2.webp')}}" alt="">
+                </div>
+                <div id="nha-nam-book-title-one">Nhân chứng kể lại cuộc chiến khốc liệt bảo vệ biên giới năm 1979
+                </div>
+                <div id="nha-nam-book-title-two">Trên tay bác sĩ Nguyễn Thái Long, người đồng đội bị thương nặng chỉ
+                    kịp nói lên những lời cuối...
+                </div>
+                <div id="nha-nam-book-date">Thứ Ba, 25/02/2025</div>
+            </div>
+            <div class="nha-nam-book">
+                <div id="nha-nam-book-img"><img
+                        src="{{url_for('static', filename='/images/nha-nam-book/nha-nam-book-3.png')}}" alt="">
+                </div>
+                <div id="nha-nam-book-title-one">Sách của đại đức Hàn Quốc bán hết 5.000 bản trong tháng đầu ra mắt
+                    tại Việt Nam\</div>
+                <div id="nha-nam-book-title-two">Là tác giả của nhiều đầu sách được độc giả Hàn Quốc nói riêng và
+                    châu Á nói chung yêu...</div>
+                <div id="nha-nam-book-date">Thứ Hai, 24/02/2025</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-seven">
+        <div id="section-seven-title">
+            <div id="section-seven-title-one">Các đối tác</div>
+            <div id="section-seven-title-two">xem thêm</div>
+        </div>
+        <div id="section-two-content">
+            <div class="Partner"><img
+                    src="https://bizweb.dktcdn.net/100/363/455/articles/screenshot-2023-09-26-175445.jpg?v=1695725699413"
+                    alt="">
+                <p>Simon and Schuster</p>
+            </div>
+            <div class="Partner"><img
+                    src="https://bizweb.dktcdn.net/100/363/455/articles/screenshot-2023-09-26-093035.jpg?v=1695695448453"
+                    alt="">
+                <p>Pop Up Projects</p>
+            </div>
+            <div class="Partner"><img
+                    src="https://bizweb.dktcdn.net/100/363/455/articles/fireandwaterlogo-768x831.jpg?v=1695695322987"
+                    alt="">
+                <p>HarperCollins Publishers</p>
+            </div>
+            <div class="Partner"><img
+                    src="https://bizweb.dktcdn.net/100/363/455/articles/logo-goethe-institut.png?v=1694484225040"
+                    alt="">
+                <p>Viện Goethe Hà Nội</p>
+            </div>
+            <div class="Partner"><img src="https://bizweb.dktcdn.net/100/363/455/articles/logo.jpg?v=1694079471953"
+                    alt="">
+                <p>Lotte Department Store Vietnam</p>
+            </div>
+            <div class="Partner"><img
+                    src="https://bizweb.dktcdn.net/100/363/455/articles/penguin-random-house-svg.png?v=1694079204497"
+                    alt="">
+                <p>Penguin Random House</p>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

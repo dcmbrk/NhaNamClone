@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}{{category}}{% endblock %}
+{% block extra_stylesheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/tac-gia/tac-gia.css')}} ">
+{% endblock %}
+{% block content %}
+
+<main>
+    <div id="title-nav">
+        <div id="title-nav-content">
+            <p id="index">Trang chủ</p> <i class="ri-arrow-right-s-line"></i>
+            <p id="now"> Tác giả</p>
+        </div>
+    </div>
+    <div id="title">
+        <div id="title-tac-gia">
+            <p style="font-size: 28px;">Tác giả</p>
+        </div>
+        <div id="title-tin">
+            <p>DANH MỤC TIN</p>
+        </div>
+    </div>
+    <div id="box-content">
+        <div id="tac-gia-content">
+            {% for author in authors %}
+            <div class="tac-gia-box">
+                <a href="{{ url_for('author', id = author['id']) }}">
+                    <img src="{{ author['author_img']}}" alt="">
+                </a>
+                <div class="tac-gia-box-name">
+                    {{ author['name'] }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div id="tin-content">
+            {% for i in range(5) %}
+            <div class="tins" id="tins-border">
+                <img src="{{ url_for('static', filename='images/491279363-1088490436652023-2743767814237791180-n.webp')}}"
+                    alt="">
+                <div id="tins-content">
+                    <div id="tins-content-text">Ra mắt bản dịch tác phẩm "Cuốn sách hoang dã" của tác giả Juan</div>
+                    <div id="tins-content-date">Thứ Ba, 06/05/2025</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div id="pages">
+        <div id="pages-content">
+            {% if page > 1 %}
+            <i><a href="{{ url_for('authors', page=page-1) }}">‹</a></i>
+            {% endif %}
+
+            {% if page != 1 %}
+            <p class="page"><a href="{{ url_for('authors', page=1) }}">1</a></p>
+            {% else %}
+            <p id="page-now" class="page"><a href="{{ url_for('authors', page=1) }}">1</a></p>
+            {% endif %}
+
+            {% if page - 3 > 1 %}
+            <p class="page">…</p>
+            {% endif %}
+
+            {% for p in range(page-2, page+3) %}
+            {% if 1 < p < total_pages %} {% if p==page %} <p id="page-now" class="page"><a
+                    href="{{ url_for('authors', page=p) }}">{{ p }}</a></p>
+                {% else %}
+                <p class="page"><a href="{{ url_for('authors', page=p) }}">{{ p }}</a></p>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+
+                {% if page + 2 < total_pages - 1 %} <p class="page">…</p>
+                    {% endif %}
+
+                    {# Luôn hiện trang cuối nếu >1 #}
+                    {% if total_pages > 1 %}
+                    {% if page == total_pages %}
+                    <p id="page-now" class="page"><a href="{{ url_for('authors', page=total_pages) }}">{{ total_pages
+                            }}</a></p>
+                    {% else %}
+                    <p class="page"><a href="{{ url_for('authors', page=total_pages) }}">{{ total_pages }}</a></p>
+                    {% endif %}
+                    {% endif %}
+
+                    {% if page < total_pages %} <i><a href="{{ url_for('authors', page=page+1) }}">›</a></i>
+                        {% endif %}
+        </div>
+    </div>
+</main>
+{% endblock %}
