@@ -1,0 +1,150 @@
+#box-content {
+  width: 100%;
+  height: 700px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+#title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  color: green;
+  font-weight: bolder;
+}
+
+#title-tac-gia {
+  justify-items: center;
+  width: 36%;
+}
+
+#title-tin {
+  justify-items: center;
+  width: 60%;
+}
+
+#title-tin {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#tac-gia-content {
+  display: grid;
+  grid-template-columns: 222px 222px 222px 222px;
+  grid-template-rows: 233px 233px 233px;
+}
+
+.tac-gia-box {
+  width: 222px;
+  height: 233px;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tac-gia-box img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.tac-gia-box-name {
+  padding-top: 15px;
+}
+
+#tin-content {
+  width: 303px;
+}
+
+.tins img {
+  width: 120px;
+  height: 77px;
+  border-radius: 8px;
+}
+
+.tins {
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+#tins-border {
+  border-bottom: 1px solid gray;
+  padding-bottom: 15px;
+}
+
+#tins-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding-left: 10px;
+}
+
+#tins-content-text {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+#tins-content-date {
+  font-size: 14px;
+  color: gray;
+}
+
+/* pages */
+
+#pages {
+  width: 950px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  margin: 60px auto;
+}
+
+#pages-content {
+  width: 28%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#pages-content p a {
+  font-size: 14px;
+  text-decoration: none;
+  color: black;
+}
+
+#pages-content i a {
+  font-size: 14px;
+  text-decoration: none;
+  color: black;
+}
+
+#pages-content p:hover {
+  border-radius: 50%;
+  border: 1px solid green;
+}
+
+#pages-content i:hover {
+  border-radius: 50%;
+  border: 1px solid green;
+}
+
+#page-now {
+  border-radius: 50%;
+  border: 1px solid green;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+}
