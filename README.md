@@ -3,7 +3,8 @@
 Đây là một dự án mô phỏng lại website bán sách của **Nhã Nam**, :
 
 - Chia làm 2 microservice đơn giản: `Service 1`: Giao diện người dùng (User), `Service 2`: Giao diện quản trị viên (Admin)
-- Áp dụng thêm các extension tích hợp trong flask: `SQLAlchemy`, `Migrate`, `WTForms`, ... 
+- Áp dụng thêm các extension tích hợp trong flask: `SQLAlchemy`, `Migrate`, `WTForms`, ...
+- HTML, CSS được làm bởi **Sơn**
 
 
 ## 🚀 Cách chạy dự án
